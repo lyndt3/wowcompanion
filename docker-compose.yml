@@ -1,0 +1,16 @@
+services:
+  wow-companion:
+    build: .
+    container_name: wow-companion
+    restart: unless-stopped
+    ports:
+      - "3300:3300"
+    environment:
+      - NODE_ENV=production
+      - PORT=3300
+    volumes:
+      - ./server.js:/app/server.js
+      - ./public:/app/public
+      - ./src:/app/src
+      - ./addon:/app/addon
+      - ./bridge:/app/bridge

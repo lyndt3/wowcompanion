@@ -1,0 +1,16 @@
+{
+  "name": "WoW Companion",
+  "short_name": "WoW Companion",
+  "description": "World of Warcraft Real-Time Companion Dashboard for iPad",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0d14",
+  "theme_color": "#121824",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23121824' stroke='%23f5b324' stroke-width='4'/><polygon points='50,15 70,75 50,60 30,75' fill='%23f5b324'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

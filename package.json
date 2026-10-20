@@ -1,0 +1,14 @@
+{
+  "name": "wow-companion",
+  "version": "1.0.0",
+  "description": "WoW Real-Time Companion Server & Web App for iPad",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0",
+    "archiver": "^7.0.1"
+  }
+}

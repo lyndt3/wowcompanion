@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>WoW Companion - iPad Second Screen</title>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WoW Companion">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <link rel="stylesheet" href="/style.css?v=2.7">
+  <!-- Wowhead Power Tooltips -->
+  <script>const whTooltips = {colorLinks: false, iconizeLinks: false, renameLinks: false};</script>
+  <script src="https://wow.zamimg.com/js/tooltips.js"></script>
+</head>
+<body class="theme-dark">
+  <div id="combat-overlay" class="combat-overlay hidden"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+    <!-- Top Header HUD -->
+    <header class="app-header">
+      <div class="char-hud">
+        <div class="char-avatar" id="char-avatar">⚔️</div>
+        <div class="char-meta">
+          <div class="char-row-1">
+            <span class="char-name" id="char-name">Daniel</span>
+            <span class="char-level" id="char-level">Nv 90</span>
+            <span class="char-zone" id="hud-zone">Silvermoon City</span><span class="char-realm" id="char-realm" style="color: #8b9bb4; font-size: 11px; margin-left: 6px;">Silvermoon</span>
+          </div>
+          <!-- Vitals Bars -->
+          <div class="vitals-container">
+            <div class="vital-bar hp-bar">
+              <div class="vital-fill" id="hp-fill" style="width: 100%;"></div>
+              <span class="vital-text" id="hp-text">100%</span>
+            </div>
+            <div class="vital-bar power-bar">
+              <div class="vital-fill" id="power-fill" style="width: 100%;"></div>
+              <span class="vital-text" id="power-text">100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Status & Combat Pill -->
+      <div class="header-right">
+        <button id="btn-toggle-amoled" class="header-icon-btn" title="Alternar Modo AMOLED Preto Puro">🌙 AMOLED</button>
+        <button id="btn-toggle-sound" class="header-icon-btn active" title="Efeitos Sonoros & Chimes">🔊 Som</button>
+        <div id="combat-badge" class="badge-combat hidden">EM COMBATE</div>
+        <div id="connection-pill" class="status-pill status-simulated">
+          <span class="pulse-dot"></span>
+          <span id="connection-label">Simulação</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main View Switcher -->
+    <main class="app-main">
+      <!-- VIEW: MAP -->
+      <section id="view-map" class="view-panel active">
+        <div class="map-hud-overlay">
+          <div class="hud-coords-card">
+            <div class="coord-item">
+              <span class="coord-lbl">X</span>
+              <span class="coord-val" id="hud-coord-x">49.2</span>
+            </div>
+            <div class="coord-item">
+              <span class="coord-lbl">Y</span>
+              <span class="coord-val" id="hud-coord-y">52.8</span>
+            </div>
+            <div class="coord-item">
+              <span class="coord-lbl">Rumo</span>
+              <span class="coord-val" id="hud-facing">180°</span>
+            </div>
+            <div class="coord-item">
+              <span class="coord-lbl">Vel</span>
+              <span class="coord-val" id="hud-speed">100%</span>
+            </div>
+          </div>
+
+          <!-- Zone Selector & GPS Actions -->
+          <div class="map-controls-card">
+            <select id="zone-select" class="zone-dropdown" title="Selecionar Zona">
+              <!-- Dynamically populated -->
+            </select>
+            <button id="btn-map-mode" class="icon-btn" title="Alternar Mapa Arte / Satélite">🗺️ Arte</button>
+            <button id="btn-recenter" class="icon-btn active" title="Bloquear no Jogador">🎯 GPS</button>
+            <button id="btn-toggle-trail" class="icon-btn active" title="Rastro de Passos">👣</button>
+            <div class="zoom-controls-group">
+              <button id="btn-zoom-out" class="icon-btn zoom-btn" title="Diminuir Zoom">➖</button>
+              <span id="hud-zoom-badge" class="hud-zoom-badge" title="Nível de Zoom">1.0x</span>
+              <button id="btn-zoom-in" class="icon-btn zoom-btn" title="Aumentar Zoom">➕</button>
+            </div>
+          </div>
+
+          <!-- Target Mini Card -->
+          <div id="target-card" class="target-card hidden">
+            <div class="target-title">
+              <span id="target-name">Alvo Atual</span>
+              <span id="target-rel" class="target-hostile">Inimigo</span>
+            </div>
+            <div class="vital-bar target-bar">
+              <div class="vital-fill" id="target-hp-fill" style="width: 100%;"></div>
+              <span class="vital-text" id="target-hp-text">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Leaflet Map Container -->
+        <div id="wow-map" class="map-container"></div>
+      </section>
+
+      <!-- VIEW: QUESTS -->
+      <section id="view-quests" class="view-panel">
+        <div class="panel-header">
+          <h2>📜 Missões em Curso</h2>
+          <span class="badge" id="quest-count">0 ativas</span>
+        </div>
+        <div class="quests-container" id="quests-list">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- VIEW: INVENTORY & GEAR -->
+      <section id="view-inventory" class="view-panel">
+        <div class="panel-header">
+          <div class="header-left-group" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <h2>🎒 Equipamento & Mochila</h2>
+            <div id="inv-ilvl-badge" class="header-ilvl-pill" title="Nível de Item Médio Equipado">
+              <span class="ilvl-pill-icon">🛡️</span>
+              <span class="ilvl-pill-lbl">Item Level:</span>
+              <strong id="inv-ilvl-val" class="ilvl-pill-val">314.2</strong>
+            </div>
+          </div>
+          <div class="money-display" id="money-display">
+            <span class="gold" id="gold-val">0g</span>
+            <span class="silver" id="silver-val">0s</span>
+            <span class="copper" id="copper-val">0c</span>
+          </div>
+        </div>
+
+        <div class="inventory-tabs">
+          <button class="inv-tab-btn active" data-tab="gear">🛡️ Equipamento (Janela C)</button>
+          <button class="inv-tab-btn" data-tab="bags">🎒 Mochila (<span id="free-slots-counter">0/0</span> livres)</button>
+        </div>
+
+        <!-- TAB: GEAR (WOW CHARACTER SHEET PAPERDOLL) -->
+        <div id="tab-gear-content" class="inv-tab-content active">
+          <div class="sheet-top-summary">
+            <div class="sheet-title-info">
+              <h3 id="sheet-char-name">RÄZÂER</h3>
+              <p id="sheet-char-subtitle">Guerreiro Nível 90 • Silvermoon</p>
+            </div>
+            <div class="sheet-ilvl-crest" title="Nível de Item Geral">
+              <span class="crest-number" id="sheet-ilvl-num">314.2</span>
+              <span class="crest-label">NÍVEL DE ITEM</span>
+              <span class="crest-sub" id="sheet-ilvl-sub">Equipado: 314.2</span>
+            </div>
+          </div>
+
+          <div class="wow-paperdoll-wrapper">
+            <!-- Left Column: Head, Neck, Shoulder, Back, Chest, Shirt, Tabard, Wrist -->
+            <div class="paperdoll-column col-left" id="paperdoll-left"></div>
+
+            <!-- Center Stage: Character Visualizer & Live Stats -->
+            <div class="paperdoll-center">
+              <div class="char-stage warrior-glow">
+                <div class="stage-avatar-box">
+                  <div class="stage-crest-icon" id="sheet-class-crest">⚔️</div>
+                  <div class="stage-class-label" id="sheet-class-name">WARRIOR</div>
+                </div>
+                <!-- Real-Time Telemetry Vitals overlay -->
+                <div class="stage-telemetry-hud">
+                  <div class="stage-vital-row">
+                    <span class="sv-lbl">Vida</span>
+                    <div class="sv-bar"><div class="sv-fill hp" id="stage-hp-bar" style="width: 100%;"></div></div>
+                    <span class="sv-num" id="stage-hp-val">100%</span>
+                  </div>
+                  <div class="stage-vital-row">
+                    <span class="sv-lbl">Fúria</span>
+                    <div class="sv-bar"><div class="sv-fill power" id="stage-power-bar" style="width: 0%;"></div></div>
+                    <span class="sv-num" id="stage-power-val">0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Character Attributes Panel -->
+              <div class="character-stats-panel" id="char-stats-panel">
+                <div class="stats-group">
+                  <h4>Atributos Base</h4>
+                  <div class="stat-line"><span>Força:</span><strong id="stat-str">-</strong></div>
+                  <div class="stat-line"><span>Vigor:</span><strong id="stat-sta">-</strong></div>
+                  <div class="stat-line"><span>Armadura:</span><strong id="stat-arm">-</strong></div>
+                </div>
+                <div class="stats-group">
+                  <h4>Estatísticas Secundárias</h4>
+                  <div class="stat-line"><span>Acerto Crítico:</span><strong id="stat-crit">-</strong></div>
+                  <div class="stat-line"><span>Aceleração:</span><strong id="stat-haste">-</strong></div>
+                  <div class="stat-line"><span>Maestria:</span><strong id="stat-mas">-</strong></div>
+                  <div class="stat-line"><span>Versatilidade:</span><strong id="stat-vers">-</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Hands, Waist, Legs, Feet, Finger1, Finger2, Trinket1, Trinket2 -->
+            <div class="paperdoll-column col-right" id="paperdoll-right"></div>
+          </div>
+
+          <!-- Bottom Row: MainHand, SecondaryHand, Ranged -->
+          <div class="paperdoll-weapons" id="paperdoll-weapons"></div>
+        </div>
+
+        <!-- TAB: BAGS (CATEGORIZED WITH UPGRADE COMPARISONS) -->
+        <div id="tab-bags-content" class="inv-tab-content">
+          <div class="bag-toolbar-row">
+            <input type="text" id="bag-search-input" placeholder="🔍 Pesquisar na mochila..." class="bag-search-field">
+            <select id="bag-quality-filter" class="bag-filter-select">
+              <option value="all">Todas as Raridades</option>
+              <option value="4">Épico (Roxo)</option>
+              <option value="3">Raro (Azul)</option>
+              <option value="2">Incomum (Verde)</option>
+              <option value="1">Comum (Branco)</option>
+              <option value="0">Pobre (Cinzento)</option>
+            </select>
+          </div>
+
+          <!-- Economy & Loot Watcher Banner -->
+          <div class="economy-summary-banner" id="economy-summary-banner">
+            <div class="econ-box junk-box">
+              <div class="econ-icon">🗑️</div>
+              <div class="econ-info">
+                <span class="econ-lbl">Lixo nas Mochilas (Venda NPC)</span>
+                <span class="econ-val" id="junk-total-val">0 itens • 0g 0s 0c</span>
+              </div>
+              <button class="econ-action-btn" id="btn-highlight-junk">Filtrar Lixo</button>
+            </div>
+            <div class="econ-box session-profit-box">
+              <div class="econ-icon">💰</div>
+              <div class="econ-info">
+                <span class="econ-lbl">Lucro Gold Nesta Sessão</span>
+                <span class="econ-val profit-positive" id="session-profit-val">+0g 0s</span>
+              </div>
+              <span class="econ-sub" id="session-profit-sub">Base da sessão: 0g</span>
+            </div>
+          </div>
+
+          <!-- Category Quick-Filter Chips -->
+          <div class="category-chips-bar" id="category-chips-bar"></div>
+
+          <!-- Categorized Bags Container -->
+          <div class="categorized-bag-wrapper" id="categorized-bag-wrapper"></div>
+        </div>
+      </section>
+
+      <!-- VIEW: COLLECTIONS -->
+      <section id="view-collections" class="view-panel">
+        <div class="panel-header">
+          <h2>🏆 Coleções & Conquistas</h2>
+        </div>
+        <div class="collections-summary-grid">
+          <div class="collection-stat-card">
+            <div class="stat-icon">🐎</div>
+            <div class="stat-value" id="stat-mounts">0</div>
+            <div class="stat-label">Montadas</div>
+          </div>
+          <div class="collection-stat-card">
+            <div class="stat-icon">🐾</div>
+            <div class="stat-value" id="stat-pets">0</div>
+            <div class="stat-label">Mascotes</div>
+          </div>
+          <div class="collection-stat-card">
+            <div class="stat-icon">🧸</div>
+            <div class="stat-value" id="stat-toys">0</div>
+            <div class="stat-label">Brinquedos</div>
+          </div>
+          <div class="collection-stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value" id="stat-achieves">0</div>
+            <div class="stat-label">Pontos Conquistas</div>
+          </div>
+        </div>
+
+        <div class="collections-info-box">
+          <h3>Sincronização de Coleções</h3>
+          <p>Os teus dados de coleções, montadas e itens são atualizados no iPad quando fazes <code>/reload</code> ou sais do jogo com o addon ativo.</p>
+        </div>
+      </section>
+
+      <!-- VIEW: TANK HUD & DUNGEON/RAID COMPANION -->
+      <section id="view-tank" class="view-panel">
+        <div class="panel-header tank-panel-header">
+          <div class="tank-header-title">
+            <h2 id="combat-panel-title">⚔️ Combat Assistant & Rotação DPS</h2>
+            <span class="tank-patch-badge">Midnight Season 2 (Patch 12.1)</span>
+          </div>
+          <div class="tank-header-actions">
+            <button id="role-toggle-btn" class="role-mode-btn" title="Alternar entre Rotação DPS e HUD de Tank">
+              <span id="role-toggle-icon">⚔️</span>
+              <span id="role-toggle-label">Modo: DPS Live</span>
+            </button>
+            <button id="tank-voice-btn" class="tank-voice-toggle" title="Ativar/Desativar Sintetizador de Voz no iPad">
+              <span id="tank-voice-icon">🔇</span>
+              <span id="tank-voice-label">Voz Silenciada</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- iPad Interactive Command Deck -->
+        <div class="tank-command-deck" id="tank-command-deck">
+          <div class="command-deck-header">
+            <div class="cd-title-group">
+              <span class="cd-badge">TOUCH IPAD</span>
+              <span class="cd-title">🎮 Deck de Ações Rápidas no Jogo</span>
+            </div>
+            <span class="cd-feedback" id="command-feedback">Pronto</span>
+          </div>
+          <div class="command-deck-grid">
+            <button class="cmd-btn cmd-pull-10" data-cmd="/pull 10" title="Iniciar Contagem de Pull de 10s">
+              <span class="cmd-icon">⏱️</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Pull 10s</span>
+                <span class="cmd-lbl-sub">Contagem Raid</span>
+              </div>
+            </button>
+            <button class="cmd-btn cmd-pull-5" data-cmd="/pull 5" title="Iniciar Contagem de Pull de 5s">
+              <span class="cmd-icon">⏱️</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Pull 5s</span>
+                <span class="cmd-lbl-sub">Contagem Rápida</span>
+              </div>
+            </button>
+            <button class="cmd-btn cmd-rc" data-cmd="/readycheck" title="Iniciar Verificação de Prontidão">
+              <span class="cmd-icon">✔️</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Ready Check</span>
+                <span class="cmd-lbl-sub">Confirmar Grupo</span>
+              </div>
+            </button>
+            <button class="cmd-btn cmd-skull" data-cmd="/tm 8" title="Marcar Alvo com Caveira">
+              <span class="cmd-icon">💀</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Marcar Caveira</span>
+                <span class="cmd-lbl-sub">Foco Primário</span>
+              </div>
+            </button>
+            <button class="cmd-btn cmd-cross" data-cmd="/tm 7" title="Marcar Alvo com Cruz">
+              <span class="cmd-icon">❌</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Marcar Cruz</span>
+                <span class="cmd-lbl-sub">Foco Secundário</span>
+              </div>
+            </button>
+            <button class="cmd-btn cmd-clear" data-cmd="/tm 0" title="Limpar Marcas do Alvo">
+              <span class="cmd-icon">🧹</span>
+              <div class="cmd-lbl-wrap">
+                <span class="cmd-lbl-main">Limpar Marcas</span>
+                <span class="cmd-lbl-sub">Reset Alvo</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Real-Time Threat, Healer Mana & Taunt Banner -->
+        <div class="tank-realtime-grid">
+          <!-- Threat Status Card -->
+          <div class="tank-card threat-status-card" id="tank-threat-card">
+            <div class="card-eyebrow">ESTADO DE AGRO</div>
+            <div class="threat-display">
+              <div class="threat-orb safe" id="threat-orb"></div>
+              <div class="threat-info">
+                <h3 id="threat-status-title">AGRO SEGURO</h3>
+                <p id="threat-status-sub">Tens a ameaça sob controlo.</p>
+              </div>
+            </div>
+            <div class="threat-mini-radar" id="threat-mini-radar">
+              <span class="radar-indicator" id="radar-indicator">Alvo atual: Seguro</span>
+            </div>
+          </div>
+
+          <!-- Healer Mana & Party Vitality Card -->
+          <div class="tank-card healer-mana-card" id="healer-mana-card">
+            <div class="card-eyebrow">VITALIDADE & MANA DO HEALER</div>
+            <div class="healer-mana-content">
+              <div class="healer-meta-row">
+                <div class="healer-role-badge">HEALER</div>
+                <span class="healer-name" id="healer-unit-name">Curador da Equipa</span>
+              </div>
+              <div class="healer-gauge-row">
+                <div class="healer-gauge-bar">
+                  <div class="healer-gauge-fill" id="healer-mana-fill" style="width: 100%;"></div>
+                </div>
+                <span class="healer-gauge-num" id="healer-mana-pct">100%</span>
+              </div>
+              <div class="healer-vitality-pills">
+                <div class="vitality-pill" id="pill-battle-res" title="Cargas de Reanimação">
+                  <span class="vp-icon">⚡</span>
+                  <span class="vp-lbl">Combat Res:</span>
+                  <strong class="vp-val" id="val-battle-res">0 Disp.</strong>
+                </div>
+                <div class="vitality-pill" id="pill-sated" title="Estado de Bloodlust / Sated">
+                  <span class="vp-icon">🩸</span>
+                  <span class="vp-lbl">Bloodlust:</span>
+                  <strong class="vp-val" id="val-sated">Pronto</strong>
+                </div>
+              </div>
+              <div class="healer-warning-alert hidden" id="healer-mana-warning">
+                ⚠️ MANA CRÍTICA DO HEALER (&lt;20%) - NÃO PULLAR!
+              </div>
+            </div>
+          </div>
+
+          <!-- Taunt Alert Card -->
+          <div class="tank-card taunt-alert-card" id="tank-taunt-card">
+            <div class="card-eyebrow">SWAP DE CO-TANK & TAUNT</div>
+            <div class="taunt-banner-content">
+              <div class="taunt-icon-pulse" id="taunt-pulse-icon">⚡</div>
+              <div class="taunt-text">
+                <h3 id="taunt-headline">CO-TANK NORMAL</h3>
+                <p id="taunt-subtext">Sem necessidade de troca imediata.</p>
+              </div>
+              <div class="co-tank-stacks-counter" id="co-tank-stacks-box">
+                <span class="stacks-num" id="co-tank-stacks-num">0</span>
+                <span class="stacks-lbl">Stacks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Mitigation Tracker (Protection Warrior) -->
+          <div class="tank-card mitigation-card" id="tank-mitigation-card">
+            <div class="card-eyebrow">MITIGAÇÃO ATIVA & DEFESA</div>
+            <div class="mitigation-grid">
+              <div class="mit-pill" id="mit-shield-block">
+                <div class="mit-icon">🛡️</div>
+                <div class="mit-details">
+                  <div class="mit-name">Shield Block</div>
+                  <div class="mit-status" id="mit-sb-status">Inativo</div>
+                </div>
+              </div>
+              <div class="mit-pill" id="mit-ignore-pain">
+                <div class="mit-icon">💪</div>
+                <div class="mit-details">
+                  <div class="mit-name">Ignore Pain</div>
+                  <div class="mit-status" id="mit-ip-status">Inativo</div>
+                </div>
+              </div>
+              <div class="mit-pill" id="mit-major-def">
+                <div class="mit-icon">🌟</div>
+                <div class="mit-details">
+                  <div class="mit-name">Defensivo Maior</div>
+                  <div class="mit-status" id="mit-major-status">Pronto</div>
+                </div>
+              </div>
+            </div>
+            <!-- Mini-Details: DTPS & Mitigation Uptime -->
+            <div class="dtps-summary-matrix">
+              <div class="dtps-box">
+                <span class="dtps-box-lbl">Dano Recebido / seg (DTPS)</span>
+                <strong class="dtps-box-val" id="live-dtps-val">0 /s</strong>
+              </div>
+              <div class="dtps-box">
+                <span class="dtps-box-lbl">Uptime de Mitigação</span>
+                <strong class="dtps-box-val" id="mitigation-uptime-val">100%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Real-Time DPS Rotation Helper Deck (Live @ 30 FPS) -->
+        <div class="dps-rotation-deck" id="dps-rotation-deck" style="display: none;">
+          <!-- Primary Glowing Action Card (O Que Carregar Agora) -->
+          <div class="dps-card dps-main-card" id="dps-main-card">
+            <div class="card-eyebrow">⚡ O QUE CARREGAR AGORA (NEXT CAST)</div>
+            <div class="dps-ability-hero">
+              <div class="dps-icon-wrapper">
+                <img id="dps-spell-icon-img" class="dps-hero-icon" src="" alt="" style="display:none;" onerror="this.style.display='none'; document.getElementById('dps-spell-fallback').style.display='flex';">
+                <span id="dps-spell-fallback" class="dps-icon-fallback">⚔️</span>
+                <div class="dps-keybind-badge" id="dps-keybind">1</div>
+              </div>
+              <div class="dps-ability-meta">
+                <h1 class="dps-spell-name" id="dps-spell-name">A aguardar combate...</h1>
+                <div class="dps-rationale-pill" id="dps-rationale">🔥 Seleciona um alvo e ataca para ver a rotação</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Queue Preview Card (+1 A Seguir) -->
+          <div class="dps-card dps-queue-card" id="dps-queue-card">
+            <div class="card-eyebrow">⏳ A SEGUIR (+1 QUEUE)</div>
+            <div class="dps-queue-body">
+              <div class="dps-queue-icon-box">
+                <img id="dps-queue-icon-img" class="dps-queue-icon" src="" alt="" style="display:none;" onerror="this.style.display='none'; document.getElementById('dps-queue-fallback').style.display='flex';">
+                <span id="dps-queue-fallback" class="dps-queue-fallback">✨</span>
+              </div>
+              <div class="dps-queue-details">
+                <div class="dps-queue-keybind" id="dps-queue-keybind">2</div>
+                <div class="dps-queue-name" id="dps-queue-name">Próxima habilidade</div>
+              </div>
+            </div>
+            <div class="dps-queue-hint">Prepara o dedo nesta tecla no GCD</div>
+          </div>
+
+          <!-- Target Status & Execute Alert Card -->
+          <div class="dps-card dps-target-card" id="dps-target-card">
+            <div class="card-eyebrow">🎯 ALVO & JANELA DE EXECUTE</div>
+            <div class="dps-target-body">
+              <div class="dps-tar-meta">
+                <span class="dps-tar-label">Vida do Alvo:</span>
+                <strong class="dps-tar-pct" id="dps-target-hp-text">100%</strong>
+              </div>
+              <div class="dps-tar-bar-wrap">
+                <div class="dps-tar-bar-fill" id="dps-target-hp-fill" style="width: 100%;"></div>
+                <div class="dps-execute-marker" title="Janela de Execute (20%)"></div>
+              </div>
+              <div class="dps-execute-alert hidden" id="dps-execute-alert">
+                🔥 FASE DE EXECUTE ATIVA (&lt;20% HP) - DANO MÁXIMO!
+              </div>
+            </div>
+          </div>
+
+          <!-- Healer Mana & Support Card (Crucial for DPS in M+/Raids) -->
+          <div class="dps-card dps-healer-card" id="dps-healer-card">
+            <div class="card-eyebrow">💧 MANA DO HEALER & GRUPO</div>
+            <div class="dps-healer-body">
+              <div class="dps-healer-gauge-row">
+                <div class="healer-gauge-bar">
+                  <div class="healer-gauge-fill" id="dps-healer-fill" style="width: 100%;"></div>
+                </div>
+                <span class="healer-gauge-num" id="dps-healer-num">100%</span>
+              </div>
+              <div class="dps-healer-meta">
+                <span>Vigia a mana do teu Healer antes de puxares mobs extra!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time Healer Command & Triage Deck (Live @ 30 FPS) -->
+        <div class="healer-command-deck" id="healer-command-deck" style="display: none;">
+          <!-- Primary Emergency Triage Card -->
+          <div class="healer-card healer-main-card" id="healer-main-card">
+            <div class="card-eyebrow">💚 PRIORIDADE MÁXIMA DE CURA (TRIAGE LIVE)</div>
+            <div class="healer-triage-hero">
+              <div class="healer-patient-box">
+                <div class="patient-header">
+                  <span class="patient-badge" id="healer-triage-class-badge">PRIORIDADE</span>
+                  <strong class="patient-name" id="healer-triage-name">Equipa Saudável</strong>
+                  <span class="patient-hp-num" id="healer-triage-hp-pct">100%</span>
+                </div>
+                <div class="patient-hp-bar">
+                  <div class="patient-hp-fill" id="healer-triage-hp-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="healer-spell-recommendation">
+                <div class="dps-icon-wrapper healer-icon-wrapper">
+                  <img id="healer-spell-icon-img" class="dps-hero-icon" src="" alt="" style="display:none;" onerror="this.style.display='none'; document.getElementById('healer-spell-fallback').style.display='flex';">
+                  <span id="healer-spell-fallback" class="dps-icon-fallback">💚</span>
+                  <div class="dps-keybind-badge healer-keybind-badge" id="healer-keybind">1</div>
+                </div>
+                <div class="healer-spell-meta">
+                  <h1 class="dps-spell-name" id="healer-spell-name">Aguardar dano...</h1>
+                  <div class="healer-rationale-pill" id="healer-rationale">✨ Grupo seguro - faz downtime DPS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dispel & Decurse Alert Card -->
+          <div class="healer-card healer-dispel-card" id="healer-dispel-card">
+            <div class="card-eyebrow">🧹 DISPEL & PURIFICAÇÃO (DECURSE)</div>
+            <div class="healer-dispel-body">
+              <div class="dispel-icon-pulse" id="healer-dispel-icon">✨</div>
+              <div class="dispel-text-group">
+                <h3 id="healer-dispel-title">SEM DEBUFFS NOCIVOS</h3>
+                <p id="healer-dispel-desc">Nenhum aliado com debuff nocivo.</p>
+              </div>
+              <div class="dispel-keybind-pill hidden" id="healer-dispel-btn-box">
+                <span class="dispel-keybind-val" id="healer-dispel-keybind">F</span>
+                <span class="dispel-keybind-lbl">DISPEL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tank Guardian & External Defensives Card -->
+          <div class="healer-card healer-tank-card" id="healer-tank-card">
+            <div class="card-eyebrow">🛡️ GUARDIÃO DO TANK (DEFENSIVOS EXTERNOS)</div>
+            <div class="healer-tank-body">
+              <div class="tank-status-pill safe" id="healer-tank-status-pill">
+                <span class="tank-status-icon">🛡️</span>
+                <span class="tank-status-txt" id="healer-tank-status-txt">Tank Saudável</span>
+              </div>
+              <p class="tank-guidance-txt" id="healer-tank-guidance">Guarda Ironbark / Pain Suppression / Sac para picos de dano (&lt;40% HP).</p>
+            </div>
+          </div>
+
+          <!-- AoE Group Damage Spike Card -->
+          <div class="healer-card healer-aoe-card" id="healer-aoe-card">
+            <div class="card-eyebrow">🌊 DANO EM GRUPO (AOE SPIKE)</div>
+            <div class="healer-aoe-body">
+              <div class="aoe-spike-counter">
+                <strong class="aoe-num" id="healer-aoe-count">0</strong>
+                <span class="aoe-lbl">Aliados &lt;75%</span>
+              </div>
+              <div class="aoe-spell-tip">
+                <span class="aoe-tip-lbl">Cura de Área:</span>
+                <strong class="aoe-tip-val" id="healer-aoe-spell">Wild Growth / Sanctify</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Dungeon / Raid Tactical Guide ("O Que Fazer") -->
+        <div class="tank-guide-section">
+          <div class="guide-header-bar">
+            <div class="guide-selector-wrap">
+              <label for="tank-instance-select">📍 Masmorra / Raid:</label>
+              <select id="tank-instance-select" class="tank-dropdown"></select>
+            </div>
+            <div class="guide-patch-tag" id="guide-zone-tag">Zona Auto-Detetada</div>
+          </div>
+
+          <!-- Mythic+ Keystone Companion (Midnight S2) -->
+          <div class="mplus-companion-card" id="mplus-companion-card">
+            <div class="mplus-top-row">
+              <div class="mplus-level-box">
+                <span class="mplus-lbl">KEYSTONE MIDNIGHT S2</span>
+                <h3 class="mplus-val" id="mplus-keystone-lvl">+10</h3>
+              </div>
+              <div class="mplus-cutoffs-wrap">
+                <div class="mplus-cutoff-badge chest-3">
+                  <span class="chest-star">⭐⭐⭐ +3</span>
+                  <strong id="mplus-time-3">18:00</strong>
+                </div>
+                <div class="mplus-cutoff-badge chest-2">
+                  <span class="chest-star">⭐⭐ +2</span>
+                  <strong id="mplus-time-2">24:00</strong>
+                </div>
+                <div class="mplus-cutoff-badge chest-1">
+                  <span class="chest-star">⭐ +1</span>
+                  <strong id="mplus-time-1">30:00</strong>
+                </div>
+              </div>
+              <div class="mplus-deaths-box">
+                <span class="mplus-lbl">💀 MORTES / PENALIZAÇÃO</span>
+                <div class="deaths-val-row">
+                  <strong id="mplus-death-count">0</strong>
+                  <span class="penalty-tag" id="mplus-penalty-time">(+0s)</span>
+                </div>
+              </div>
+            </div>
+            <div class="mplus-trash-gauge-wrap">
+              <div class="trash-gauge-header">
+                <span>Progresso de Forças Inimigas / Trash (Midnight S2):</span>
+                <strong id="mplus-trash-pct">0.0% / 100%</strong>
+              </div>
+              <div class="trash-gauge-track">
+                <div class="trash-gauge-fill" id="mplus-trash-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instance Trash & Route Notes -->
+          <div class="trash-notes-box" id="tank-trash-notes">
+            <span class="trash-icon">⚠️</span>
+            <span class="trash-text" id="trash-notes-text">Cuidado com casters e frontals perigosos no caminho.</span>
+          </div>
+
+          <!-- Boss Tabs -->
+          <div class="boss-nav-tabs" id="boss-nav-tabs"></div>
+
+          <!-- Active Boss Tactical Card -->
+          <div class="boss-tactical-card" id="boss-tactical-card">
+            <div class="boss-title-row">
+              <h3 id="boss-name-title">Nome do Boss</h3>
+              <span class="boss-status-badge" id="boss-status-badge">Táticas de Tank</span>
+            </div>
+
+            <div class="tactics-grid">
+              <div class="tactic-block pos-block">
+                <div class="tb-header">
+                  <span class="tb-icon">📍</span>
+                  <h4>Posicionamento & Viragem</h4>
+                </div>
+                <p id="tactic-pos-desc">Vira o boss de costas para o grupo para proteger a equipa.</p>
+              </div>
+
+              <div class="tactic-block buster-block">
+                <div class="tb-header">
+                  <span class="tb-icon">💥</span>
+                  <h4>Tank Buster & Defensivos</h4>
+                </div>
+                <p id="tactic-buster-desc">Mantém a mitigação ativa antes do cast terminar.</p>
+              </div>
+
+              <div class="tactic-block taunt-block">
+                <div class="tb-header">
+                  <span class="tb-icon">🔄</span>
+                  <h4>Regras de Taunt Swap</h4>
+                </div>
+                <p id="tactic-taunt-desc">Em dungeon mantém o agro constante; em raid troca aos 2 stacks.</p>
+              </div>
+
+              <div class="tactic-block danger-block">
+                <div class="tb-header">
+                  <span class="tb-icon">🛑</span>
+                  <h4>Avisos Críticos & Interrupções</h4>
+                </div>
+                <p id="tactic-danger-desc">Corta casts prioritários e apanha adds imediatamente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: SETTINGS & DOWNLOADS -->
+      <section id="view-settings" class="view-panel">
+        <div class="panel-header">
+          <h2>⚙️ Definições & Instalação</h2>
+        </div>
+
+        <div class="settings-group">
+          <h3>🎮 Modo Simulação (Para Testar no iPad)</h3>
+          <p>Permite testar o movimento e o GPS do mapa agora mesmo sem precisares de estar no WoW.</p>
+          <div class="toggle-row">
+            <span>Ativar Simulação de Movimento</span>
+            <label class="switch">
+              <input type="checkbox" id="sim-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="sim-speed-row">
+            <span>Velocidade de Movimento:</span>
+            <input type="range" id="sim-speed" min="1" max="5" value="2">
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>📱 Experiência iPad & Visor AMOLED</h3>
+          <p>Otimizações de ecrã OLED e efeitos táteis para uma experiência fluida no teu iPad Pro / Air.</p>
+          <div class="toggle-row">
+            <span>Modo AMOLED Preto Puro (Poupança de Bateria iPad)</span>
+            <label class="switch">
+              <input type="checkbox" id="settings-amoled-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="toggle-row">
+            <span>Alertas de Voz Sintetizada (Voz / TTS)</span>
+            <label class="switch">
+              <input type="checkbox" id="settings-voice-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="toggle-row">
+            <span>Sons Táteis & Chimes de Alerta</span>
+            <label class="switch">
+              <input type="checkbox" id="settings-sound-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>📥 Descarregar Addon & Desktop Bridge</h3>
+          <p>Descarrega o addon para a pasta <code>World of Warcraft\_retail_\Interface\AddOns</code> e a ponte desktop para o teu PC:</p>
+          <div class="download-buttons">
+            <a href="/api/addon/download" class="action-btn download-btn">📦 Descarregar Addon (WoWCompanion.zip)</a>
+            <a href="/api/bridge/download" class="action-btn download-btn">💻 Descarregar Bridge (Python Script)</a>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>📡 Estado da Ligação</h3>
+          <div class="status-details" id="status-details">
+            <div>Ponte Desktop: <strong id="bridge-status-txt">Desconectado</strong></div>
+            <div>Clientes Conectados: <strong id="clients-count-txt">1</strong></div>
+            <div>IP do Servidor: <strong>192.168.1.108:3300</strong> (LAN) / <strong>100.121.114.9:3300</strong> (Tailscale)</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation Bar (Touch-Optimized for iPad) -->
+    <nav class="app-nav">
+      <button class="nav-btn active" data-view="view-map">
+        <span class="nav-icon">🗺️</span>
+        <span class="nav-label">Mapa GPS</span>
+      </button>
+      <button class="nav-btn" data-view="view-tank">
+        <span class="nav-icon" id="combat-nav-icon">⚔️</span>
+        <span class="nav-label" id="combat-nav-label">Combate</span>
+      </button>
+      <button class="nav-btn" data-view="view-quests">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label">Missões</span>
+      </button>
+      <button class="nav-btn" data-view="view-inventory">
+        <span class="nav-icon">🎒</span>
+        <span class="nav-label">Mochila</span>
+      </button>
+      <button class="nav-btn" data-view="view-collections">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">Coleções</span>
+      </button>
+      <button class="nav-btn" data-view="view-settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Definições</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="/app.js?v=2.7"></script>
+</body>
+</html>

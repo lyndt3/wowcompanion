@@ -1,0 +1,212 @@
+[
+  {
+    "id": 2393,
+    "name": "Silvermoon City",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "City",
+    "mapImageUrl": "/maps/2393.jpg",
+    "mapImageUrlHd": "/maps/2393_hd.jpg",
+    "mapImageUrlSat": "/maps/2393_sat.jpg"
+  },
+  {
+    "id": 934,
+    "name": "Atal'Dazar",
+    "expansion": "Battle for Azeroth / Midnight",
+    "continent": "Zuldazar",
+    "type": "Dungeon",
+    "mapImageUrl": "/maps/934.jpg",
+    "mapImageUrlHd": "/maps/934_hd.jpg",
+    "mapImageUrlSat": "/maps/934_sat.jpg"
+  },
+  {
+    "id": 935,
+    "name": "Atal'Dazar (Sacrificial Pits)",
+    "expansion": "Battle for Azeroth / Midnight",
+    "continent": "Zuldazar",
+    "type": "Dungeon",
+    "mapImageUrl": "/maps/935.jpg",
+    "mapImageUrlHd": "/maps/935_hd.jpg",
+    "mapImageUrlSat": "/maps/935_sat.jpg"
+  },
+  {
+    "id": 854,
+    "name": "Atal'Dazar",
+    "expansion": "Battle for Azeroth / Midnight",
+    "continent": "Zuldazar",
+    "type": "Dungeon",
+    "mapImageUrl": "/maps/854.jpg",
+    "mapImageUrlHd": "/maps/854_hd.jpg",
+    "mapImageUrlSat": "/maps/854_sat.jpg"
+  },
+  {
+    "id": 862,
+    "name": "Zuldazar",
+    "expansion": "Battle for Azeroth / Midnight",
+    "continent": "Zandalar",
+    "type": "Zone",
+    "mapImageUrl": "/maps/862.jpg",
+    "mapImageUrlHd": "/maps/862_hd.jpg",
+    "mapImageUrlSat": "/maps/862_sat.jpg"
+  },
+  {
+    "id": 2400,
+    "name": "Silvermoon City",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "City",
+    "mapImageUrl": "/maps/2400.jpg",
+    "mapImageUrlHd": "/maps/2400_hd.jpg",
+    "mapImageUrlSat": "/maps/2400_sat.jpg"
+  },
+  {
+    "id": 2401,
+    "name": "Quel'Thalas (Eversong)",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "Zone"
+  },
+  {
+    "id": 2402,
+    "name": "Ghostlands",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "Zone"
+  },
+  {
+    "id": 2403,
+    "name": "Zul'Aman",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "Zone"
+  },
+  {
+    "id": 2404,
+    "name": "Sunwell Plateau",
+    "expansion": "Midnight",
+    "continent": "Quel'Thalas",
+    "type": "Zone"
+  },
+  {
+    "id": 2405,
+    "name": "Voidstorm Depths",
+    "expansion": "Midnight",
+    "continent": "Cosmic Void",
+    "type": "Zone"
+  },
+  {
+    "id": 2339,
+    "name": "Dornogal",
+    "expansion": "The War Within",
+    "continent": "Khaz Algar",
+    "type": "City",
+    "mapImageUrl": "/maps/2339.jpg",
+    "mapImageUrlHd": "/maps/2339_hd.jpg",
+    "mapImageUrlSat": "/maps/2339_sat.jpg"
+  },
+  {
+    "id": 2248,
+    "name": "Isle of Dorn",
+    "expansion": "The War Within",
+    "continent": "Khaz Algar",
+    "type": "Zone",
+    "mapImageUrl": "/maps/2248.jpg",
+    "mapImageUrlHd": "/maps/2248_hd.jpg",
+    "mapImageUrlSat": "/maps/2248_sat.jpg"
+  },
+  {
+    "id": 2214,
+    "name": "The Ringing Deeps",
+    "expansion": "The War Within",
+    "continent": "Khaz Algar",
+    "type": "Zone"
+  },
+  {
+    "id": 2215,
+    "name": "Hallowfall",
+    "expansion": "The War Within",
+    "continent": "Khaz Algar",
+    "type": "Zone"
+  },
+  {
+    "id": 2255,
+    "name": "Azj-Kahet",
+    "expansion": "The War Within",
+    "continent": "Khaz Algar",
+    "type": "Zone"
+  },
+  {
+    "id": 2112,
+    "name": "Valdrakken",
+    "expansion": "Dragonflight",
+    "continent": "Dragon Isles",
+    "type": "City",
+    "mapImageUrl": "/maps/2112.jpg",
+    "mapImageUrlHd": "/maps/2112_hd.jpg",
+    "mapImageUrlSat": "/maps/2112_sat.jpg"
+  },
+  {
+    "id": 84,
+    "name": "Stormwind City",
+    "expansion": "Classic / Retail",
+    "continent": "Eastern Kingdoms",
+    "type": "City",
+    "mapImageUrl": "/maps/84.jpg",
+    "mapImageUrlHd": "/maps/84_hd.jpg",
+    "mapImageUrlSat": "/maps/84_sat.jpg"
+  },
+  {
+    "id": 85,
+    "name": "Orgrimmar",
+    "expansion": "Classic / Retail",
+    "continent": "Kalimdor",
+    "type": "City",
+    "mapImageUrl": "/maps/85.jpg",
+    "mapImageUrlHd": "/maps/85_hd.jpg",
+    "mapImageUrlSat": "/maps/85_sat.jpg"
+  },
+  {
+    "id": 125,
+    "name": "Dalaran",
+    "expansion": "Legion",
+    "continent": "Broken Isles",
+    "type": "City",
+    "mapImageUrl": "/maps/125.jpg",
+    "mapImageUrlHd": "/maps/125_hd.jpg",
+    "mapImageUrlSat": "/maps/125_sat.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Elwynn Forest",
+    "expansion": "Classic / Retail",
+    "continent": "Eastern Kingdoms",
+    "type": "Zone"
+  },
+  {
+    "id": 1,
+    "name": "Durotar",
+    "expansion": "Classic / Retail",
+    "continent": "Kalimdor",
+    "type": "Zone"
+  },
+  {
+    "id": 2129,
+    "name": "Ohn'ahran Plains",
+    "expansion": "Dragonflight",
+    "continent": "Dragon Isles",
+    "type": "Zone",
+    "mapImageUrl": "/maps/2129.jpg",
+    "mapImageUrlHd": "/maps/2129_hd.jpg",
+    "mapImageUrlSat": "/maps/2129_sat.jpg"
+  },
+  {
+    "id": 1670,
+    "name": "Oribos",
+    "expansion": "Shadowlands",
+    "continent": "Shadowlands",
+    "type": "City",
+    "mapImageUrl": "/maps/1670.jpg",
+    "mapImageUrlHd": "/maps/1670_hd.jpg",
+    "mapImageUrlSat": "/maps/1670_sat.jpg"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "updatedAt": "2026-10-19 12:00:00",
+  "character": {
+    "name": "Daniel",
+    "realm": "Aggra (Português)",
+    "class": "WARRIOR",
+    "level": 90,
+    "money": { "gold": 184500, "silver": 60, "copper": 40, "total": 1845006040 },
+    "zone": "Silvermoon City",
+    "subZone": "Sunstrider Spire",
+    "mapID": 2400
+  },
+  "equipment": {
+    "Head": { "slotId": 1, "name": "Sunstrider's Radiant Crown", "quality": 4, "itemLevel": 665, "icon": "inv_helm_plate_raidpaladin_t_01" },
+    "Neck": { "slotId": 2, "name": "Amulet of the Sunwell Dawn", "quality": 4, "itemLevel": 670, "icon": "inv_jewelry_necklace_07" },
+    "Shoulder": { "slotId": 3, "name": "Pauldrons of Quel'Thalas Reborn", "quality": 4, "itemLevel": 665, "icon": "inv_shoulder_plate_raidwarrior_t_01" },
+    "Chest": { "slotId": 5, "name": "Cuirass of the Voidwarden", "quality": 4, "itemLevel": 678, "icon": "inv_chest_plate_raidwarrior_t_01" },
+    "Waist": { "slotId": 6, "name": "Girdle of Silvermoon Defense", "quality": 4, "itemLevel": 665, "icon": "inv_belt_plate_raidwarrior_t_01" },
+    "Legs": { "slotId": 7, "name": "Greaves of the Amani Conqueror", "quality": 4, "itemLevel": 672, "icon": "inv_pant_plate_raidwarrior_t_01" },
+    "Feet": { "slotId": 8, "name": "Sabatons of Solar Might", "quality": 4, "itemLevel": 665, "icon": "inv_boots_plate_raidwarrior_t_01" },
+    "Wrist": { "slotId": 9, "name": "Bracers of the Eclipse", "quality": 4, "itemLevel": 665, "icon": "inv_bracer_plate_raidwarrior_t_01" },
+    "Hands": { "slotId": 10, "name": "Gauntlets of the Blazing Spire", "quality": 4, "itemLevel": 670, "icon": "inv_glove_plate_raidwarrior_t_01" },
+    "Finger1": { "slotId": 11, "name": "Signet of the Unified Elves", "quality": 4, "itemLevel": 670, "icon": "inv_jewelry_ring_70" },
+    "Finger2": { "slotId": 12, "name": "Band of the Void Incursion", "quality": 4, "itemLevel": 672, "icon": "inv_jewelry_ring_68" },
+    "Trinket1": { "slotId": 13, "name": "Crystalline Sunwell Spark", "quality": 4, "itemLevel": 678, "icon": "inv_misc_monsteregg_04" },
+    "Trinket2": { "slotId": 14, "name": "Resonating Void Behemoth Core", "quality": 4, "itemLevel": 672, "icon": "inv_gizmo_superradiator" },
+    "Back": { "slotId": 15, "name": "Cloak of the High Elven Ranger", "quality": 4, "itemLevel": 665, "icon": "inv_misc_cape_18" },
+    "MainHand": { "slotId": 16, "name": "Quel'Delar, Sister Blade Awakened", "quality": 4, "itemLevel": 685, "icon": "inv_sword_2h_sunwell_d_01" }
+  },
+  "bags": {
+    "totalSlots": 128,
+    "freeSlots": 54,
+    "items": [
+      { "bag": 0, "slot": 1, "itemID": 6948, "name": "Hearthstone", "quality": 1, "count": 1, "icon": "inv_misc_rune_01" },
+      { "bag": 0, "slot": 2, "itemID": 230101, "name": "Sunwell Infused Healing Potion", "quality": 2, "count": 20, "icon": "inv_alchemy_potions_01" },
+      { "bag": 0, "slot": 3, "itemID": 230120, "name": "Flask of Solar Clarity", "quality": 3, "count": 10, "icon": "inv_alchemy_elixirs_01" },
+      { "bag": 0, "slot": 4, "itemID": 231500, "name": "Void Crystal Fragment", "quality": 3, "count": 48, "icon": "inv_misc_gem_crystal_01" },
+      { "bag": 1, "slot": 1, "itemID": 232100, "name": "Quel'Thalas Silk", "quality": 2, "count": 120, "icon": "inv_fabric_purplefire_01" },
+      { "bag": 1, "slot": 2, "itemID": 232200, "name": "Sunsteel Ore", "quality": 3, "count": 85, "icon": "inv_ore_ironclaw" },
+      { "bag": 1, "slot": 3, "itemID": 232300, "name": "Void-Tainted Leather", "quality": 2, "count": 64, "icon": "inv_misc_monsterscales_16" },
+      { "bag": 2, "slot": 1, "itemID": 233000, "name": "Quel'Thalas Vault Key", "quality": 4, "count": 3, "icon": "inv_misc_key_03" }
+    ]
+  },
+  "quests": [
+    {
+      "questID": 82010,
+      "title": "Midnight: The Call to Quel'Thalas",
+      "isComplete": true,
+      "objectives": [
+        { "text": "Rendezvous with Lor'themar Theron in Silvermoon City", "finished": true, "numFulfilled": 1, "numRequired": 1 }
+      ]
+    },
+    {
+      "questID": 82055,
+      "title": "Light and Shadow: The Sunwell Ward",
+      "isComplete": false,
+      "objectives": [
+        { "text": "Attune the Sunwell Focus Crystal", "finished": true, "numFulfilled": 1, "numRequired": 1 },
+        { "text": "Repel the Voidstorm Infiltration (0/3)", "finished": false, "numFulfilled": 1, "numRequired": 3 }
+      ]
+    },
+    {
+      "questID": 82120,
+      "title": "The Warlords of Zul'Aman",
+      "isComplete": false,
+      "objectives": [
+        { "text": "Scout the Amani Border Defenses", "finished": false, "numFulfilled": 0, "numRequired": 1 }
+      ]
+    }
+  ],
+  "collections": {
+    "mountsCount": 425,
+    "petsCount": 680,
+    "toysCount": 290,
+    "achievementPoints": 24150
+  }
+}

@@ -1,0 +1,664 @@
+{
+  "season": "Midnight Season 2",
+  "expansion": "Midnight (12.x)",
+  "instances": [
+    {
+      "id": "murder-row",
+      "name": "[M+ S2] Murder Row (Silvermoon)",
+      "mapId": 2813,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Masmorra no Beco do Homicídio (Silvermoon City). Cuidado com 'Amani Infiltrators' que têm stealth e abrem com sangramento no Healer. Corta 'Fel Nova' e quebra linha de visão nos atiradores com LoS nos pilares.",
+      "bosses": [
+        {
+          "name": "Kystia Manaheart",
+          "position": "Encosta a boss aos arcos laterais de costas para a party. Mantém-na longe das runas de mana no chão.",
+          "tankBuster": "Fel Spray (Cone frontal devastador de fogo vil + knockback). Resposta: Shield Block OBRIGATÓRIO. Nunca vires a boss para os curandeiros.",
+          "tauntSwap": "Single tank. Quando ela conjurar 'Mirror Images', usa Thunder Clap e Taunt imediatamente nas cópias para não matarem a equipa.",
+          "interrupts": "Mirror Images: Corta os casts das cópias arcanas imediatamente com Pummel e Shockwave.",
+          "danger": "Fel Nova: Círculo de expansão rápida — sai da área ou usa Spell Reflection se fores apanhado."
+        },
+        {
+          "name": "Lithiel Cinderfury",
+          "position": "Luta no centro da praça virada para o portal demoníaco.",
+          "tankBuster": "Fingers of Gul'dan & Summon Vilefiend. O Vilefiend é um Big Add brutal que foca o tank com mordidas físicas.",
+          "tauntSwap": "Single tank. Mal o Vilefiend nascer, puxa-o com Taunt e cola-o à boss para cleave.",
+          "interrupts": "Malefic Wave: Onda escura letal. Usa os portais de teleporte (demonic gateways) no chão para saltar a onda!",
+          "danger": "Se o Vilefiend ficar solto, ataca os DPS em 2 pancadas. Prioridade máxima de Taunt."
+        },
+        {
+          "name": "Zaen Bladesorrow",
+          "position": "Mantém Zaen no meio da rua afastado das caixas de correio explosivas.",
+          "tankBuster": "Envenom (Tank Buster letal de veneno). Aplica sangramento corrosivo. Resposta: Shield Block + Ignore Pain + Spell Reflection!",
+          "tauntSwap": "Single tank. Cuidado com o salto 'Killing Spree' — ele perde o alvo temporariamente e volta ao tank; prepara Taunt se ele virar.",
+          "interrupts": "Murder in a Row: Ele marca uma linha reta de facas letais — quebra linha de visão (Line of Sight) atrás dos pilares de pedra!",
+          "danger": "Fire Bomb: Desvia-te das bombas lançadas pela equipa de assalto goblin."
+        },
+        {
+          "name": "Xath'uux the Annihilator",
+          "position": "Vira o demónio gigante de costas absolutas para as escadarias de Silvermoon.",
+          "tankBuster": "Legion Strike (Tank Buster físico colossal). Resposta: Shield Wall + Last Stand nos casts sucessivos. Mantém Shield Block ativo a 100%.",
+          "tauntSwap": "Single tank. Mantém o agro sob pressão extrema.",
+          "interrupts": "Axe Toss: Lança machados giratórios — desvia-te lateralmente.",
+          "danger": "Demonic Rage: O boss entra em frenesim e causa dano de área contínuo a toda a equipa. Usa Demoralizing Shout para reduzir o dano geral."
+        }
+      ]
+    },
+    {
+      "id": "windrunner-spire",
+      "name": "Windrunner Spire",
+      "mapId": 2805,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "Pináculo dos Windrunner. 'Windrunner Sentinels' têm flechas perfurantes que ignoram armadura. Os 'Dark Rangers' lançam Silence de área. Puxa os grupos para dentro das salas fechadas para forçar os arqueiros a aproximarem-se.",
+      "bosses": [
+        {
+          "name": "Commander Kroluk",
+          "position": "Mantém o comandante no centro do pátio de armas, virado para os portões de ferro.",
+          "tankBuster": "Rampage (Sequência rápida de 3 golpes brutais corpo a corpo). Resposta: Shield Block contínuo + Demoralizing Shout antes do primeiro golpe.",
+          "tauntSwap": "Adds de 'Rallying Bellow': Quando ele gritar, invoca reforços orcs — puxa-os com Taunt e Shockwave imediatamente.",
+          "interrupts": "Intimidating Shout: Junta-te à equipa para dividir o efeito de medo/dano partilhado (soak).",
+          "danger": "Se o Rampage te apanhar sem Shield Block, a probabilidade de morte é quase 100% em chaves altas."
+        },
+        {
+          "name": "Derelict Duo",
+          "position": "Mantém os dois capitães fantasmas juntos lado a lado virados para fora.",
+          "tankBuster": "Bone Hack (Golpe cortante penetrante que parte armadura). Resposta: Shield Block + Last Stand se a vida descer abaixo de 50%.",
+          "tauntSwap": "Curse of Darkness: Aplica debuff de sombra cumulativo. Se jogares com dois tanks ou se um pet/assistente levar aggro, troca.",
+          "interrupts": "Debilitating Shriek: Grito ensurdecedor que causa dano em área maciço. Prepara Ignore Pain antecipadamente.",
+          "danger": "Se os dois bosses se separarem, ganham buff de fúria e atacam 50% mais rápido."
+        },
+        {
+          "name": "Emberdawn",
+          "position": "A fênix ancestral corrompida. Posiciona-a na ponta da varanda, virada para o abismo.",
+          "tankBuster": "Searing Beak (Bicada flamejante que deixa rasto de fogo no tank). Resposta: Spell Reflection reflete parte do dano de fogo; usa Shield Block no impacto.",
+          "tauntSwap": "Single tank. Mantém a fênix estável.",
+          "interrupts": "Burning Gale: Vento ardente forte que empurra toda a party para trás. Corre em direção à fênix para não caíres da torre!",
+          "danger": "Queda fatal: O Burning Gale empurra em direção ao precipício. Nunca fiques de costas para o vazio."
+        },
+        {
+          "name": "The Restless Heart",
+          "position": "Topo da torre dos Windrunner. Vira a entidade de costas para a balaustrada.",
+          "tankBuster": "Tempest Slash (Golpe cortante com vento cortante). Resposta: Shield Wall + Ignore Pain.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Bullseye Windblast: Lança o tank ou jogadores ao ar — usa Heroic Leap no ar antes de bater no chão para anular o dano de queda!",
+          "danger": "A tempestade no topo da torre reduz o espaço de combate. Mantém o boss focado para que a equipa tenha espaço livre."
+        }
+      ]
+    },
+    {
+      "id": "magisters-terrace",
+      "name": "Magisters' Terrace (Midnight)",
+      "mapId": 2811,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "Versão Midnight do Terraço dos Magísteres. 'Sunblade Blood-Knights' usam Stun e 'Arcane Sorcerers' lançam Polymorph nos curandeiros. Corta e puxa os grupos para trás dos pilares.",
+      "bosses": [
+        {
+          "name": "Arcanotron Custos",
+          "position": "Encosta o golem gigante à parede sólida para evitar seres projetado pelo knockback.",
+          "tankBuster": "Repulsing Slam (Slam esmagador com empurrão). Resposta: Costas coladas à parede + Shield Block.",
+          "tauntSwap": "Single tank. Se o golem mudar de alvo durante o canal, faz Taunt imediatamente.",
+          "interrupts": "Refueling Protocol: Absorve ou bloqueia as esferas de mana que caminham em direção ao golem.",
+          "danger": "Arcane Expulsion: Explosão arcana ao redor do boss — recua 5 passos se não fores o alvo direto."
+        },
+        {
+          "name": "Degentrius",
+          "position": "Monstro do Vazio. Centro da biblioteca arcana.",
+          "tankBuster": "Hulking Fragment (Estilhaço do Vazio com impacto pesado). Resposta: Shield Block + Ignore Pain.",
+          "tauntSwap": "Single tank. Mantém o boss focado em ti.",
+          "interrupts": "Unstable Void Essence: Ajuda a equipa a apanhar as esferas pretas de essência antes que toquem no chão.",
+          "danger": "As poças de essência aumentam o dano recebido em 50% por stack."
+        },
+        {
+          "name": "Gemellus",
+          "position": "Conjurador gémeo. Mantém-no no meio do salão.",
+          "tankBuster": "Arcane Cleave contínuo. Resposta: Shield Block contínuo.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta todas as canalizações arcanas sempre que o Pummel estiver pronto.",
+          "danger": "Imagens espelho dispersas causam wipe se não forem atordoadas em cleave com Shockwave."
+        },
+        {
+          "name": "Seranel Sunlash",
+          "position": "No terraço com vista para o mar. Vira a boss para fora da varanda.",
+          "tankBuster": "Suppression Zone & Wave of Silence. Resposta: Spell Reflection protege contra a onda de silêncio arcano!",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Hastening Ward: Buff de aceleração de 100% na boss — avisa os dispellers para removerem imediatamente!",
+          "danger": "Wave of Silence: Deixa os curandeiros sem feitiços durante 6 segundos se não se protegerem atrás das barreiras."
+        }
+      ]
+    },
+    {
+      "id": "den-of-nalorakk",
+      "name": "[M+ S2] Den of Nalorakk",
+      "mapId": 2825,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Toca de Nalorakk em Zul'Aman. 'Amani Warbears' têm 'Rend' (sangramento profundo no tank) e 'Ground Slam'. Usa Shockwave e Storm Bolt para cancelar os ataques fortes dos ursos.",
+      "bosses": [
+        {
+          "name": "Sentinel of Winter",
+          "position": "Vira o sentinela para a rocha de gelo, de costas para a party.",
+          "tankBuster": "Frozen Tempest & Glacial Torment. Resposta: Spell Reflection + Ignore Pain para absorver o frio extremo.",
+          "tauntSwap": "Adds de 'Shattering Frostspike': Pega imediatamente nos espigões animados com Thunder Clap.",
+          "interrupts": "Raging Squall: Desvia-te das trombas de gelo que se movem pela sala.",
+          "danger": "Glacial Torment: Se os curandeiros não dispelarem o debuff de gelo, o tank fica congelado em bloco."
+        },
+        {
+          "name": "The Hoardmonger",
+          "position": "Centro da câmara dos tesouros saqueados de Zul'Aman.",
+          "tankBuster": "Earthshatter Slam (Cone frontal gigantesco de terra e estilhaços). Resposta: Vira SEMPRE para a rocha; Shield Block ativo.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Ravenous Bellow: Prepara Ignore Pain para o rugido de área.",
+          "danger": "Spoiled Supplies: Pessoas designadas devem pisar os cogumelos verdes estragados para não infetarem o chão todo."
+        },
+        {
+          "name": "Nalorakk (Deus Urso)",
+          "position": "O avatar do deus urso de Zul'Aman! Centro do altar de sacrifício.",
+          "tankBuster": "Overwhelming Onslaught (Combo brutal de 3 patadas de urso sucessivas). Resposta: Shield Wall + Last Stand OBRIGATÓRIOS!",
+          "tauntSwap": "Fury of the War God: Soak partilhado — divide o impacto com o grupo se a chave for alta.",
+          "interrupts": "Echoing Maul: Espalha-te quando tiveres a marca vermelha sob a cabeça para não atingires ninguém.",
+          "danger": "O Overwhelming Onslaught de Nalorakk é o maior teste de mitigação de dano físico de toda a Season 2 de Midnight."
+        }
+      ]
+    },
+    {
+      "id": "altar-of-fangs",
+      "name": "[M+ S2] Altar of Fangs",
+      "mapId": 2993,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Templo das Serpentes em Quel'Thalas. Cuidado com 'Venomspitters' (veneno cumulativo, usa Spell Reflection) e cobras gigantes com frontal de veneno.",
+      "bosses": [
+        {
+          "name": "Ravi",
+          "position": "Posiciona Ravi no centro da plataforma de pedra.",
+          "tankBuster": "Serpent Strike (Mordida rápida e venenosa). Resposta: Shield Block ativo + Ignore Pain.",
+          "tauntSwap": "Single tank. Mantém o boss focado em ti.",
+          "interrupts": "Corta os feitiços de veneno canalizados com Pummel.",
+          "danger": "Não deixes o boss virado para os casters — a cauda tem knockback."
+        },
+        {
+          "name": "The Writhing Coil",
+          "position": "Serpente colossal de duas cabeças.",
+          "tankBuster": "Constricting Wrap (O boss enrola-se no tank e esmaga a armadura). Resposta: Last Stand + Demoralizing Shout.",
+          "tauntSwap": "Se fores aprisionado pelo wrap, a equipa tem de quebrar o casulo antes que sejas asfixiado.",
+          "interrupts": "Corta os pequenos espíritos de veneno que nascem nos cantos.",
+          "danger": "Dano de sufocamento contínuo se o casulo não for destruído em 5 segundos."
+        },
+        {
+          "name": "Zul'jan",
+          "position": "Sumo-sacerdote das presas. Luta no topo do zigurate.",
+          "tankBuster": "Venomous Impale (Estaca de presas com veneno letal). Resposta: Spell Reflection + Shield Wall.",
+          "tauntSwap": "Single tank. Prepara Thunder Clap para apanhar os guardas sacrificiais.",
+          "interrupts": "Interrompe 'Venom Surge' com prioridade absoluta.",
+          "danger": "Se o Venom Surge passar sem corte, a sala inteira fica inundada de ácido permanente."
+        }
+      ]
+    },
+    {
+      "id": "the-blinding-vale",
+      "name": "[M+ S2] The Blinding Vale",
+      "mapId": 2859,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Vale cego da Luz fanática. 'Light Zealots' têm escudos de absorção e 'Radiant Purge'. Desvia-te das colunas de luz dourada no chão.",
+      "bosses": [
+        {
+          "name": "Ikuzz the Light Hunter",
+          "position": "Move o caçador pelas bordas da clareira.",
+          "tankBuster": "Piercing Lightarrow (Flecha solar penetrante). Resposta: Shield Block + Ignore Pain.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta os tiros armadilhados com Pummel e Shockwave.",
+          "danger": "Armadilhas de luz no chão cegam o tank durante 4s se forem pisadas."
+        },
+        {
+          "name": "Lightblossom Trinity",
+          "position": "Três flores sagradas gigantes. Mantém as flores focadas.",
+          "tankBuster": "Pollen Blast. Resposta: Spell Reflection devolve o dano sagrado à flor!",
+          "tauntSwap": "Alterna entre as flores conforme entram em floração.",
+          "interrupts": "Corta a flor que estiver a canalizar o brilho solar.",
+          "danger": "Se duas flores explodirem ao mesmo tempo, causa wipe de luz."
+        },
+        {
+          "name": "Lightwarden Ruia",
+          "position": "Guardiã da Luz. Centro do santuário.",
+          "tankBuster": "Radiant Cleave (Corte de luz frontal massivo). Resposta: Vira para a rocha; Shield Wall.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Interrompe 'Solar Blessing' para impedir cura.",
+          "danger": "O corte de luz dá knockback e projeta para fora da plataforma."
+        },
+        {
+          "name": "Ziekket",
+          "position": "Chefe final do Vale. Vira o monstro para a caverna escura.",
+          "tankBuster": "Blinding Fury. Resposta: Shield Block + Last Stand.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta os feitiços de raio solar com prioridade.",
+          "danger": "Quando a sala for cegada pela luz pura, esconde-te na sombra dos pilares."
+        }
+      ]
+    },
+    {
+      "id": "voidscar-arena",
+      "name": "[M+ S2] Voidscar Arena",
+      "mapId": 2923,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Arena de gladiadores do Vazio. Inimigos agressivos com fúria e habilidades de crowd control. Agrupa com Thunder Clap e atordoa com Shockwave.",
+      "bosses": [
+        {
+          "name": "Atroxus",
+          "position": "Centro da arena de combate.",
+          "tankBuster": "Brutal Decapitation (Golpe pesado de cutelo). Resposta: Shield Block + Demoralizing Shout.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta os gritos de fúria com Pummel.",
+          "danger": "Não fiques de costas para a grade de espinhos da arena."
+        },
+        {
+          "name": "Charonus",
+          "position": "Gladiador de chamas negras.",
+          "tankBuster": "Shadowflame Strike. Resposta: Spell Reflection + Ignore Pain.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta 'Dark Combustion'.",
+          "danger": "Rasto de fogo negro que corta a arena a meio."
+        },
+        {
+          "name": "Taz'Rah",
+          "position": "Campeão supremo da arena.",
+          "tankBuster": "Gladiator's Execution (Combo duplo de lâminas). Resposta: Shield Wall + Last Stand.",
+          "tauntSwap": "Single tank. Mantém a posição fixa para que a equipa possa desviar-se dos machados que caem do teto.",
+          "interrupts": "Interrompe a invocação de campeões da multidão.",
+          "danger": "O dano de execução aumenta 20% a cada golpe consecutivo."
+        }
+      ]
+    },
+    {
+      "id": "nexus-point-xenas",
+      "name": "Nexus-Point Xenas",
+      "mapId": 2915,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "Laboratório etéreo e da Luz corrompida. 'Core Technicians' têm escudos de reflexão e 'Overcharge'. Destrói as baterias antes de puxar os pulls grandes.",
+      "bosses": [
+        {
+          "name": "Chief Corewright Kasreth",
+          "position": "Encosta o engenheiro ao gerador desativado.",
+          "tankBuster": "Plasma Discharge. Resposta: Spell Reflection + Ignore Pain.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Corta o canal de recarga do núcleo.",
+          "danger": "Evita os lasers rotativos da sala."
+        },
+        {
+          "name": "Corewarden Nysarra",
+          "position": "Guardiã etérea de energia condensada.",
+          "tankBuster": "Flux Sever (Corte que desfasar a armadura). Resposta: Shield Block + Demoralizing Shout.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Interrompe os escudos dos autômatos protetores.",
+          "danger": "Desfasamento dimensional: Se levares o segundo golpe sem mitigação, ficas vulnerável a 200% de dano."
+        },
+        {
+          "name": "Lothraxion (Corrompido)",
+          "position": "O dreadlord forjado pela Luz agora imbuído de energias instáveis. Centro da câmara do Nexus.",
+          "tankBuster": "Holy Cleave & Dread Lash (Impacto duplo sagrado/sombrio). Resposta: Shield Wall + Shield Block.",
+          "tauntSwap": "Single tank. Posiciona-o de forma a não virar para os cristais de energia.",
+          "interrupts": "Corta 'Sanctified Sleep' para evitar que o grupo fique adormecido.",
+          "danger": "As asas de luz causam knockback violento — nunca fiques na borda da plataforma."
+        }
+      ]
+    },
+    {
+      "id": "maisara-caverns",
+      "name": "Maisara Caverns",
+      "mapId": 2874,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "Cavernas subterrâneas de Quel'Thalas infestadas de troggs mutantes e monstros de rocha. 'Cavern Stalkers' têm veneno paralisante e 'Deep Diggers' causam sismos.",
+      "bosses": [
+        {
+          "name": "Murojin and Nekraxx",
+          "position": "Boss duplo: Murojin (caçador) e Nekraxx (monstro subterrâneo). Mantém os dois juntos.",
+          "tankBuster": "Twin Rend (Mordida e flecha simultâneas). Resposta: Shield Block + Last Stand.",
+          "tauntSwap": "Mantém o agro de ambos. Se Nekraxx escavar, prepara Taunt mal ele emerja.",
+          "interrupts": "Corta os tiros de rede de Murojin com Pummel.",
+          "danger": "Se os dois focarem o mesmo alvo sem defensivo, causam morte instantânea."
+        },
+        {
+          "name": "Vordaza",
+          "position": "Rainha das larvas gigantes. Move-a ao longo do perímetro da gruta.",
+          "tankBuster": "Acid Spew (Jato de ácido concentrado no tank). Resposta: Spell Reflection + Ignore Pain.",
+          "tauntSwap": "Single tank. Pisa os ovos com Thunder Clap antes que eclodam.",
+          "interrupts": "Não tem corte direto. Posiciona fora das poças ácidas.",
+          "danger": "As poças de ácido aumentam de tamanho e reduzem a área segura da gruta."
+        },
+        {
+          "name": "Raktul",
+          "position": "Xamã gigante de pedra das profundezas. Encosta-o à parede de estalactites.",
+          "tankBuster": "Tectonic Pound (Martelada sísmica com onda de choque). Resposta: Shield Wall + Shield Block.",
+          "tauntSwap": "Single tank.",
+          "interrupts": "Interrompe 'Avalanche' sempre que possível.",
+          "danger": "Estalactites caem do teto durante o Tectonic Pound — move o boss para espaço aberto."
+        }
+      ]
+    },
+    {
+      "id": "the-unbinding-of-kithix",
+      "name": "The Unbinding of Kith'ix (Raid Midnight Patch 12.1.5)",
+      "mapId": 3012,
+      "type": "Raid",
+      "expansion": "Midnight Season 2 (Patch 12.1.5)",
+      "trashNotes": "A raid de boss único do Patch 12.1.5 nas profundezas sob a Coiled Isle / Vaults of Atal'Utek! O general C'Thraxxi Kith'ix desperta do sono milenar. A Lady Liadrin auxilia a raid com uma barreira protetora de Luz Sagrada. Posicionamento e controlo de Taunts nos golpes Dark Devastation e Null Gates são cruciais.",
+      "bosses": [
+        {
+          "name": "Kith'ix (Fase 1 - O Despertar do Warlord C'Thraxxi)",
+          "position": "Mantém o boss virado de costas para a raid a >25m dos portais. Quando a sala escurecer (Void Eclipses / Dark Shroud), recua imediatamente com o grupo para dentro da Barreira Protetora de Lady Liadrin.",
+          "tankBuster": "Dark Devastation: Golpe devastador que aplica o debuff 'Devastated', aumentando exponencialmente o dano físico e de sombra subsequente. No Mítico/Heroico deixa Voidscars no chão.",
+          "tauntSwap": "⚡ TAUNT SWAP IMEDIATO a cada 'Dark Devastation'! O co-tank DEVE fazer Taunt assim que o golpe atingir o primeiro tank. Nunca absorvas dois impactos seguidos.",
+          "interrupts": "Voidweaver Adds: Corta prioritariamente 'Void Bolt' e 'Dark Inversion'. Os Bomber Beetles devem ser atordoados e eliminados longe da Barreira de Liadrin.",
+          "danger": "Commanding Presence: Adds a menos de 25m de Kith'ix ganham 75% de redução de dano! O off-tank deve puxar o 'Venomous Hulk' para longe e virar o cone frontal 'Venom Roar' para fora da raid."
+        },
+        {
+          "name": "Kith'ix (Fase 2 - Negation & Eightfold Eclipse)",
+          "position": "Aos 25% de vida, Kith'ix entra na fase final de queima rápida 'Eightfold Eclipse'. Lady Liadrin cura a raid a 100% e concede buffs de aceleração para uma corrida contra o tempo.",
+          "tankBuster": "Negation: Debuff fatal aplicado ao tank ativo (+100% de velocidade de movimento e vulnerabilidade física extrema). SE O TEMPORIZADOR EXPIRAR, O TANK MORRE INSTANTANEAMENTE!",
+          "tauntSwap": "⚡ MECÂNICA DE NULL GATE: O tank com 'Negation' DEVE correr de imediato contra um 'Null Gate' para o destruir e purgar o debuff antes que o tempo esgote! Ativa um defensivo maior (Shield Wall / Last Stand) um segundo antes do choque.",
+          "interrupts": "Fase de queima pura (Burn Phase): Todos os DPS devem usar Bloodlust/Heroism, poções de combate e CDs máximos para derreter Kith'ix antes que a Luz de Liadrin se esgote.",
+          "danger": "Explosive Restabilization: Ao fechar o Null Gate, o tank liberta uma onda de choque explosiva em área. Faz um trajeto limpo e não passes por cima dos curadores nem dos DPS melee."
+        }
+      ]
+    },
+    {
+      "id": "the-venomous-abyss",
+      "name": "The Venomous Abyss (Raid Midnight S2)",
+      "mapId": 3004,
+      "type": "Raid",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "A grande Raid da Season 2 de Midnight nas profundezas sob Quel'Danas! Comunicação de Co-Tank é vital: marca sempre o teu Co-Tank como FOCO no WoW para que o HUD detete os stacks dele automaticamente.",
+      "bosses": [
+        {
+          "name": "Entombed Sentinels",
+          "position": "Guardiões sepultados no início da fenda. Cada tank pega num sentinela e afasta-os 20m.",
+          "tankBuster": "Crushing Stone (Esmagamento de rocha que estilhaça a armadura). Resposta: Shield Block contínuo.",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Crushed Armor! Os dois tanks trocam de sentinela em simultâneo com Taunt.",
+          "interrupts": "Corta o 'Stone Gaze' dos sacerdotes ao redor com Pummel e Shockwave.",
+          "danger": "Se os dois sentinelas ficarem juntos a menos de 15 metros, ganham buff de 100% de dano."
+        },
+        {
+          "name": "The Lost Explorers",
+          "position": "Expedição ancestral corrompida pelo veneno abissal. Centro da antecâmara.",
+          "tankBuster": "Shredding Shards (Golpe com lâminas estilhaçadas que aplica sangramento corrosivo cumulativo).",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Shredding Shards! O co-tank deve fazer Taunt logo após o segundo impacto.",
+          "interrupts": "Icebound Flames: Interrupção OBRIGATÓRIA dos curandeiros e casters auxiliares.",
+          "danger": "Se o tank levar o 3º stack de sangramento, o dano periódico ultrapassa a cura do Healer."
+        },
+        {
+          "name": "Vashnik the Malignant",
+          "position": "Luta na plataforma suspensa virada para as águas venenosas.",
+          "tankBuster": "Dripping Fangs (Mordida letal de presas gotejantes de veneno puro).",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Dripping Fangs! Troca rápida com Taunt.",
+          "interrupts": "Plague Froth: Ondas venenosas que atravessam a sala — desvia-te lateralmente.",
+          "danger": "Adaptive Infection: Se fores o tank secundário, corre para fora da raid quando o debuff expirar para não infetar a equipa."
+        },
+        {
+          "name": "Sszorak",
+          "position": "Leviatã das profundezas com carapaça de coral afiado. Centro da caverna marinha.",
+          "tankBuster": "Coiled Crush & Coral Impale (Golpe penetrante que perfura a armadura em 70%).",
+          "tauntSwap": "⚡ TAUNT SWAP: A cada 'Coiled Crush'! O tank que levou o golpe fica atordoado e o co-tank DEVE puxar com Taunt de imediato.",
+          "interrupts": "Ajuda a atordoar os pequenos vermes de coral que emergem do chão.",
+          "danger": "Se o co-tank não fizer taunt durante o atordoamento do primeiro tank, o boss faz um segundo golpe que mata instantaneamente."
+        },
+        {
+          "name": "The Twin Fangs",
+          "position": "Boss duplo lendário das serpentes gémeas. Cada tank assume a liderança de uma serpente.",
+          "tankBuster": "Caustic Deluge (Tank Laser) & Stone Breaker (Tank Soak em grupo).",
+          "tauntSwap": "⚡ TAUNT SWAP & COMBO: O tank com o Caustic Deluge aponta o laser para FORA da raid. O outro tank junta-se à equipa para dividir o Stone Breaker. Troca a cada ciclo!",
+          "interrupts": "Rouse the Brood: Interrupção prioritária de corte antes que nasçam dezenas de pequenas serpentes.",
+          "danger": "Se o laser do Caustic Deluge atravessar a raid, mata todos os jogadores em linha."
+        },
+        {
+          "name": "The Coiled Altar",
+          "position": "Altar ritualístico no coração do abismo. Três fases intensas de combate.",
+          "tankBuster": "Sever (Fase 1) & Blighted Severing (Fase 3 - Frontal maciço com corte de membros).",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Sever! Faz Taunt antes que o boss comece a canalizar o próximo golpe.",
+          "interrupts": "Grim Guillotine: Ajuda a absorver o impacto da guilhotina com o grupo na Fase 2.",
+          "danger": "Blighted Severing na Fase 3 deixa uma poça permanente na direção onde o boss estiver virado. Vira SEMPRE para a borda da sala!"
+        },
+        {
+          "name": "Nekzali the Soulcoiler",
+          "position": "O tecedor de almas. Mantém o boss estável entre as duas fontes de néctar abissal.",
+          "tankBuster": "Soul Siphon & Coiling Strike (Roubo da alma do tank + dano massivo).",
+          "tauntSwap": "⚡ TAUNT SWAP: Troca IMEDIATA quando a alma do tank for arrancada! O co-tank assume enquanto o primeiro tank recupera a sua alma.",
+          "interrupts": "Usa Spell Reflection para devolver parte do dano de roubo de alma.",
+          "danger": "Se a alma do tank for devorada pelo boss, ele ganha 50% de dano permanente e cura 20% da vida máxima."
+        },
+        {
+          "name": "Ulatek (Boss Final do Venomous Abyss)",
+          "position": "A entidade primordial do abismo! O combate mais espetacular da Season 2 de Midnight.",
+          "tankBuster": "Spectral Coils & Fury Unleashed (Ondas cáusticas e tentáculos espectrais letais).",
+          "tauntSwap": "⚡ TAUNT SWAP: Troca a cada 'Spectral Coils'! O tank ativo deve rodar defensivos maiores (Shield Wall / Last Stand) nos picos da Fase 3.",
+          "interrupts": "Call of the Serpent: Apanha os grandes adicionais serpenteados mal emerjam das águas com Taunt e Thunder Clap.",
+          "danger": "Rage of the Shackled: Dano colossal em toda a sala na Fase 3 de fúria berserk. Todos os defensivos do tank devem ser ativados em cadeia."
+        }
+      ]
+    },
+    {
+      "id": "void-spire",
+      "name": "Void Spire (Raid Midnight S2)",
+      "mapId": 2912,
+      "type": "Raid",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "O coração da invasão do Vazio sobre Quel'Thalas. Inimigos infundidos com sombras do cosmos e paladinos da Luz cegados pelo fanatismo.",
+      "bosses": [
+        {
+          "name": "Lightblinded Vanguard",
+          "position": "Paladinos corrompidos da Luz cega. Luta no centro do santuário estelar.",
+          "tankBuster": "Judgement (Shield of the Righteous) & Judgement (Final Verdict). Dano sagrado violento.",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Judgement! O co-tank deve fazer Taunt antes que o Final Verdict atinja o tank vulnerável.",
+          "interrupts": "Aura of Wrath & Sacred Shield: Ataca o escudo sagrado para interromper a explosão solar.",
+          "danger": "Divine Storm: Sai imediatamente do raio de turbilhão sagrado corpo a corpo."
+        },
+        {
+          "name": "Vorasius",
+          "position": "Monstro cósmico ancestral do Vazio. Encosta o leviatã à borda do abismo cósmico.",
+          "tankBuster": "Shadowclaw Slam (Garras de sombra) & Void Breath (Sopro do Vazio).",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Shadowclaw Slam! Vira o Void Breath SEMPRE para longe da raid.",
+          "interrupts": "Primordial Roar: Puxa todos para o centro — corre na direção oposta!",
+          "danger": "Se o Void Breath apanhar a raid, desintegra instantaneamente os curandeiros e DPS."
+        },
+        {
+          "name": "Fallen-King Shalhadaar",
+          "position": "O antigo rei elfo corrompido pelas sombras do Vazio. Centro da sala do trono.",
+          "tankBuster": "Void Siphon & Dark Dominion. Resposta: Shield Block + Last Stand.",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Dark Dominion! Troca rápida com Taunt.",
+          "interrupts": "Corta os sacerdotes reais sombrios que tentam curar o rei.",
+          "danger": "Não deixes o rei absorver os fragmentos de alma caídos no chão."
+        },
+        {
+          "name": "Vaelgor and Ezzorak (Dragões do Vazio)",
+          "position": "Dois dragões do Vazio gigantescos! 1 Tank em cada dragão. MANTÉM OS DOIS DRAGÕES A PELO MENOS 25 METROS DE DISTÂNCIA!",
+          "tankBuster": "Dread Breath (Sopro do terror) & Void Howl (Uivo do vazio).",
+          "tauntSwap": "⚡ TAUNT SWAP DE DRAGÕES: Quando os stacks de 'Cosmosis Gloom' atingirem 3, os dois tanks trocam de dragão com Taunt à distância e Heroic Leap!",
+          "interrupts": "Radiant Barrier: Encontra a barreira de luz para te protegeres das chamas cósmicas.",
+          "danger": "Se juntares os dois dragões a menos de 20 metros, ambos entram em frenesim e causam wipe à raid."
+        },
+        {
+          "name": "Imperator Averzian",
+          "position": "Imperador cósmico do Vazio. Mantém o imperador no centro exato da plataforma estelar.",
+          "tankBuster": "Dark Upheaval & Void Mark (Marca do Vazio que amplifica dano de sombra em 150%).",
+          "tauntSwap": "⚡ TAUNT SWAP: A CADA Void Mark! Faz Taunt mal a marca seja aplicada para que o tank marcado possa afastar-se.",
+          "interrupts": "Umbral Collapse: Junta-te à equipa para dividir o colapso dimensional.",
+          "danger": "Void Fall: Projeção de gravidade zero — usa habilidades de mobilidade para voltar à plataforma."
+        },
+        {
+          "name": "Crown of the Cosmos",
+          "position": "O boss supremo de Void Spire e da Season 2 de Midnight!",
+          "tankBuster": "Cosmic Obliteration (O golpe de tank mais devastador de toda a expansão Midnight).",
+          "tauntSwap": "⚡ TAUNT SWAP: Troca IMEDIATA a cada ciclo de Obliteration. Usa Shield Wall + Last Stand + poções de armadura!",
+          "interrupts": "Fase 3: Conduz o posicionamento da raid através das constelações de luz limpa no chão.",
+          "danger": "Qualquer atraso de 1 segundo no Taunt swap após o Cosmic Obliteration resulta em morte do tank e wipe cósmico."
+        }
+      ]
+    },
+    {
+      "id": "march-on-quel-danas",
+      "name": "March on Quel'Danas (Raid Midnight S2)",
+      "mapId": 2913,
+      "type": "Raid",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "A marcha épica de reconquista da Ilha de Quel'Danas contra as hostes da Noite Eterna.",
+      "bosses": [
+        {
+          "name": "Beloren, Child of Al'ar",
+          "position": "Fênix primordial de fogo solar no coração do platô de Quel'Danas.",
+          "tankBuster": "Solar Inferno & Talon Strike. Resposta: Spell Reflection + Shield Block.",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Solar Inferno! O fogo queima a armadura.",
+          "interrupts": "Rebirth Phase: Apanha os ovos de fênix e reúne-os para que o grupo os destrua em cleave.",
+          "danger": "Não deixes as cinzas de Beloren tocarem na água sagrada da Nascente do Sol."
+        },
+        {
+          "name": "Midnight Falls",
+          "position": "O confronto final nas margens da Nascente do Sol.",
+          "tankBuster": "Eclipse Slam & Abyssal Burst. Resposta: Shield Wall + Last Stand nos picos.",
+          "tauntSwap": "⚡ TAUNT SWAP: A cada Eclipse Slam. Troca perfeita e sincronizada.",
+          "interrupts": "Interrompe os canais de eclipse total da Nascente.",
+          "danger": "O eclipse apaga a luz da sala — mantém o boss perto dos archotes acesos."
+        }
+      ]
+    },
+    {
+      "id": "the-dreamrift",
+      "name": "The Dreamrift (Raid Midnight S2)",
+      "mapId": 2939,
+      "type": "Raid",
+      "expansion": "Midnight Season 2",
+      "trashNotes": "A fenda onírica onde os pesadelos do Vazio se cruzam com o Sonho Esmeralda sob as florestas élficas.",
+      "bosses": [
+        {
+          "name": "Chimaerus the Undreamt God",
+          "position": "O deus monstruoso dos sonhos não sonhados. Posiciona o monstro virado para o abismo da fenda.",
+          "tankBuster": "Nightmare Cleave & Phantasmagoric Bite (Mordida de pesadelo que causa dano híbrido físico e de sombra).",
+          "tauntSwap": "⚡ TAUNT SWAP: Aos 2 STACKS de Nightmare Cleave! O co-tank deve assumir imediatamente.",
+          "interrupts": "Corta as alucinações sombrias com Shockwave e Storm Bolt.",
+          "danger": "Fase de Pesadelo: Se o tank acordar do sonho sem proteção, entra em pânico incontrolável (Fear)."
+        }
+      ]
+    },
+    {
+      "id": "kings-rest",
+      "name": "[M+ S2] Kings' Rest (BfA)",
+      "mapId": 1754,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Mítica+ icónica de Zuldazar na rotação da Season 2 de Midnight! Trash perigoso: Shadow-Borne Champions com 'Severing Blade' (sangramento devastador, roda Shield Block), Animated Guardians com 'Suppressing Slam' (mantém de costas para a equipa) e Witch Doctors (interrompe Hex prioritariamente).",
+      "bosses": [
+        {
+          "name": "The Golden Serpent",
+          "position": "Inicia na borda da sala e puxa o boss em círculo conforme as poças douradas forem ocupando o chão.",
+          "tankBuster": "Tail Thrash: Golpe de cauda com impacto esmagador na armadura. Resposta: Shield Block ativo contínuo.",
+          "tauntSwap": "Single Tank. Puxa os adds de ouro (Lucre's Call) com Taunt/Heroic Throw para os manter agrupados no cleave dos DPS.",
+          "interrupts": "Corta feitiços canalizados dos pequenos adds dourados antes que cheguem ao boss.",
+          "danger": "Spit Gold deixa uma poça permanente. Nunca deixes o ouro espalhar-se no centro da sala."
+        },
+        {
+          "name": "Mchimba the Embalmer",
+          "position": "Centro da câmara de embalsamamento. Mantém o boss estável.",
+          "tankBuster": "Drain Fluids: Canalização de sombra no tank que causa dano massivo e atordoamento. Resposta: Spell Reflection reduz drasticamente o dano recebido.",
+          "tauntSwap": "Mecânica de Sarcófago: Quando um aliado for sepultado (Entomb), corre imediatamente para o sarcófago correto que estiver a tremer e bate para o libertar!",
+          "interrupts": "Corta 'Burn Corruption' se possível e afasta o boss das poças de dessecação.",
+          "danger": "Se o jogador sepultado não for libertado a tempo do sarcófago, morre sufocado no interior."
+        },
+        {
+          "name": "The Council of Tribes",
+          "position": "Encontro com 3 chefes ancestrais que entram em combate sequencialmente: Kula, Aka'ali e Zanazal.",
+          "tankBuster": "Severing Axe (Kula) & Debilitating Backhand (Aka'ali): Golpe avassalador que atordoa e arremessa o tank. Resposta: Shield Wall e mantém as costas viradas para uma parede sólida!",
+          "tauntSwap": "Mantém o foco em cada chefe mal se levante do trono com Taunt imediato.",
+          "interrupts": "Zanazal the Wise: Corta 'Lightning Bolt' e destrói o Totem da Fúria com Shockwave.",
+          "danger": "O Debilitating Backhand arremessa o tank para o outro lado da sala. Se bateres numa armadilha, ficas incapacitado."
+        },
+        {
+          "name": "Dazar, The First King",
+          "position": "O primeiro rei dos Zandalari! Mantém Dazar no centro e move-te com calma para evitar os tornados (Gale Slash).",
+          "tankBuster": "Blade Combo: Sucessão furiosa de 4 golpes rápidos em arco. Resposta: Shield Block + Ignore Pain OBRIGATÓRIOS. Em chaves altas, ativa Shield Wall.",
+          "tauntSwap": "Na transição dos raptores ancestrais (Reban e T'zala), puxa os raptores com Taunt rápido antes que saltem para o Healer.",
+          "interrupts": "Ajuda a abrandar os raptores com Piercing Howl / atordoamento em área.",
+          "danger": "Gale Slash cria tornados permanentes que se movem em espiral. Planeia a tua movimentação com antecedência."
+        }
+      ]
+    },
+    {
+      "id": "temple-of-sethraliss",
+      "name": "[M+ S2] Temple of Sethraliss (BfA)",
+      "mapId": 1877,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Templo de Sethraliss em Vol'dun na rotação da Season 2 de Midnight! Cuidado com Krolusk Riders ('Armor Crush' frontal), Dervish com 'Dusty Spores' (cegueira em área) e Shrouded Fangs (veneno paralisante que requer dispel imediato).",
+      "bosses": [
+        {
+          "name": "Adderis and Aspix",
+          "position": "Mantém ambos os bosses juntos para dano de cleave, virados de costas para o grupo.",
+          "tankBuster": "Jolt & Static Charge: Dano de choque elétrico elevado. Resposta: Spell Reflection no feitiço Jolt de Aspix para devolver o dano.",
+          "tauntSwap": "Single Tank. Vira a cabeça de Adderis para longe da equipa quando ele canalizar o arco elétrico frontal.",
+          "interrupts": "Interrompe Aspix com prioridade e usa Shockwave para cortar feitiços múltiplos.",
+          "danger": "⚡ LIGHTNING SHIELD: Quando um dos bosses ativar o Escudo de Relâmpagos, PÁRA DE ATACAR esse boss imediatamente! Qualquer dano reflete um choque fatal em todo o grupo."
+        },
+        {
+          "name": "Merektha",
+          "position": "Serpente colossal venenosa no centro da câmara de areia.",
+          "tankBuster": "Noxious Breath: Sopro frontal contínuo de veneno letal. Resposta: Shield Block + Ignore Pain. NUNCA vires para o grupo!",
+          "tauntSwap": "Fase de Areia (Burrow): Puxa as serpentes pequenas com Thunder Clap enquanto o boss está enterrado.",
+          "interrupts": "Knot of Snakes: Se um DPS ou Healer for enrolado por cobras no chão, vira o teu foco e ataca o nó de cobras no segundo!",
+          "danger": "Se o tank olhar de frente para o 'Blinding Sand' durante a canalização, fica cego por 5 segundos e perde a ameaça."
+        },
+        {
+          "name": "Galvazzt",
+          "position": "Elemental de relâmpagos instável no centro da câmara de pilares condutores.",
+          "tankBuster": "Capacitance: Descarga contínua nos alvos mais próximos. Resposta: Demoralizing Shout + Spell Reflection.",
+          "tauntSwap": "Mecânica de Soak de Relâmpago: Pilares emitem feixes de energia para o boss. O tank e o grupo DEVEM intercalar-se à frente dos feixes para absorver a carga, nunca deixando Galvazzt atingir 100 de energia!",
+          "interrupts": "Não há cortes tradicionais. O combate é uma corrida matemática de absorção dos feixes elétricos.",
+          "danger": "Se Galvazzt atingir 100 de energia por falta de absorção, lança uma explosão cósmica que dá wipe imediato à chave."
+        },
+        {
+          "name": "Avatar of Sethraliss",
+          "position": "O grande encontro de cura e controlo de mobs! O objetivo é curar o Avatar a 100% enquanto proteges o teu Healer.",
+          "tankBuster": "Cardiovascular Shock dos Heart Guardians: Inimigos de elite que batem furiosamente no tank.",
+          "tauntSwap": "Apanha os Heart Guardians e Plague Doctors mal entrem na sala com Taunt e Heroic Throw.",
+          "interrupts": "⚡ HOODOO HEXERS: Prioridade NÚMERO 1! Corta e atordoa o 'Hoodoo Hex' que os Hexers canalizam no Avatar para impedir a cura do teu Healer.",
+          "danger": "Se os Hexers canalizarem o debuff no Avatar, o Healer não consegue curar a vida do boss e os sapos venenosos acumulam até ao wipe."
+        }
+      ]
+    },
+    {
+      "id": "ruby-life-pools",
+      "name": "[M+ S2] Ruby Life Pools (DF)",
+      "mapId": 2520,
+      "type": "Dungeon",
+      "expansion": "Midnight Season 2 (M+ Pool)",
+      "trashNotes": "Mítica intensa das Ilhas do Dragão na rotação da Season 2 de Midnight! Trash brutal: Primalist Cinderweavers (Cinderbolt, corte obrigatório), Flamechannelers (Flashfire em área) e Blazebound Destroyers (Living Bomb e dano de fogo constante).",
+      "bosses": [
+        {
+          "name": "Melidrussa Chillworn",
+          "position": "Puxa a boss para a borda da plataforma para gerir as poças de gelo expansivas.",
+          "tankBuster": "Frigid Shard: Estilhaço de gelo rápido que causa dano massivo no tank. Resposta: Spell Reflection + Shield Block contínuo.",
+          "tauntSwap": "Na invocação dos ovos de dragão (Infused Whelps), agrupa as crias imediatamente com Thunder Clap e Shockwave.",
+          "interrupts": "Frost Overload: Quando a boss ganha escudo absorvente e canaliza tempestade, todos devem quebrar o escudo e interromper com Pummel.",
+          "danger": "Chillstorm atrai os jogadores para o centro da poça de gelo. Mantém defensivos ativos durante a sucção."
+        },
+        {
+          "name": "Kokia Blazehoof",
+          "position": "Centro do anel superior virado para a borda exterior da plataforma.",
+          "tankBuster": "Searing Blows: Sequência de golpes de fogo que aplicam debuff de sangramento incandescente cumulativo. Resposta: Shield Block + Ignore Pain nos 2 primeiros; Shield Wall se acumular 3 stacks.",
+          "tauntSwap": "Quando o Elemental 'Blazebound Firestorm' nascer, posiciona-o junto à boss para cleave máximo e foca o abate rápido.",
+          "interrupts": "Roaring Blaze do elemental: Se canalizar, o dano em área wipeia a equipa. Usa atordoamentos pesados.",
+          "danger": "Molten Boulder: O boss lança uma rocha de fogo rolante na direção de um jogador. Nunca fiques na trajetória da pedra."
+        },
+        {
+          "name": "Kyrakka and Erkhart Stormvein",
+          "position": "O boss no chão (Erkhart) e o dragão voador (Kyrakka). Mantém Erkhart afastado do grupo.",
+          "tankBuster": "Flamespit & Stormslam: Combo de cuspidela de fogo e impacto trovejante. Resposta: Last Stand + Spell Reflection.",
+          "tauntSwap": "Aos 50% de vida de qualquer um deles, Kyrakka aterra. Agrupa os dois em simultâneo com Taunt para queimar ambos ao mesmo tempo!",
+          "interrupts": "Corta 'Cloudburst' de Erkhart e desvia o sopro frontal de Kyrakka (Roaring Firebreath) para longe do Healer.",
+          "danger": "Infernocore deixa poças de chamas móveis. Se o tank rodar o dragão na direção da equipa, o sopro queima todos instantaneamente."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+## Interface: 120000, 120001, 120002, 120100, 110007, 110100, 11503, 40400
+## Title: |cff00e5ffWoW Companion|r Telemetry
+## Notes: Real-time telemetry pixel display and data exporter for iPad second-screen dashboard (Midnight 12.x & Retail).
+## Author: Daniel & Antigravity
+## Version: 1.2.0
+## SavedVariables: WoWCompanionDB
+
+core.lua
